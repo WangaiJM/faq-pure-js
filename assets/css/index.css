@@ -1,3 +1,147 @@
+@font-face {
+  font-family: "WorkSans";
+  src: url(./../fonts/WorkSans-VariableFont_wght.ttf);
+}
+:root {
+  --color-heading: hsl(292, 42%, 14%);
+  --color-text: hsl(292, 16%, 49%);
+  --color-accent: hsl(281, 83%, 54%);
+  --color-line: hsl(275, 100%, 97%);
+  --color-bg-card: hsl(0, 0%, 100%);
+  --shadow: 0 0.3rem 0.6rem hsl(0, 0%, 0%);
+  --ff: "WorkSans", sans-serif;
+  --fs-1: 5.6rem;
+  --fs-2: 1.8rem;
+  --fs-3: 1.6rem;
+  --lh-1: 6.6rem;
+  --lh-2: 2.1rem;
+  --lh-3: 2.4rem;
+  --ls: 0;
+  --fw-bold: 700;
+  --fw-medium: 500;
+  --fw-regular: 400;
+  --space-xs: 0.8rem;
+  --space-sm: 1.6rem;
+  --space-md: 2.4rem;
+  --space-lg: 3.2rem;
+  --space-xl: 4rem;
+}
 
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: var(--ff);
+  font-size: var(--fs-3);
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(to bottom, hsl(292, 42%, 14%) 40%, hsl(275, 100%, 97%) 40%);
+  background-image: url(./../images/background-pattern-mobile.svg);
+  background-repeat: no-repeat;
+}
+@media (min-width: 40rem) {
+  body {
+    background-image: url(./../images/background-pattern-desktop.svg);
+  }
+}
+
+.container {
+  background-color: var(--color-bg-card);
+  max-width: 35rem;
+  padding: var(--space-md);
+  border-radius: var(--space-xs);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+@media (min-width: 40rem) {
+  .container {
+    max-width: 60rem;
+    padding: var(--space-xl);
+    border-radius: var(--space-sm);
+    gap: var(--space-lg);
+  }
+}
+.container-header {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-xs);
+  align-items: center;
+}
+.container-header h1 {
+  font-size: var(--fs-1);
+  line-height: var(--lh-1);
+  letter-spacing: var(--ls);
+}
+.container-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+.container-body .card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+.container-body .card.active h2 {
+  color: var(--color-accent);
+}
+.container-body .card.active .card-body {
+  display: block;
+}
+.container-body .card-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.container-body .card-head h2 {
+  font-size: var(--fs-2);
+  line-height: var(--lh-2);
+  letter-spacing: var(--ls);
+  color: var(--color-heading);
+}
+.container-body .card-head button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+.container-body .card-body {
+  display: none;
+}
+.container-body .card-body p {
+  font-size: var(--fs-3);
+  line-height: var(--lh-3);
+  letter-spacing: var(--ls);
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+}
 
 /*# sourceMappingURL=index.css.map */

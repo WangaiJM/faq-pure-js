@@ -1,0 +1,195 @@
+@font-face {
+  font-family: "WorkSans";
+  src: url(./../fonts/WorkSans-VariableFont_wght.ttf);
+}
+
+$black: hsl(0, 0, 0%);
+$white: hsl(0, 0, 100%);
+$dark-purple: hsl(292, 42%, 14%);
+$medium-purple: hsl(292, 16%, 49%);
+$light-purple: hsl(275, 100%, 97%);
+$violet: hsl(281, 83%, 54%);
+
+:root {
+  // colors
+  --color-heading: #{$dark-purple};
+  --color-text: #{$medium-purple};
+  --color-accent: #{$violet};
+  --color-line: #{$light-purple};
+  --color-bg-card: #{$white};
+
+  --shadow: 0 0.3rem 0.6rem #{$black};
+
+  // typography
+  --ff: "WorkSans", sans-serif;
+
+  --fs-1: 5.6rem;
+  --fs-2: 1.8rem;
+  --fs-3: 1.6rem;
+
+  --lh-1: 6.6rem;
+  --lh-2: 2.1rem;
+  --lh-3: 2.4rem;
+
+  --ls: 0;
+
+  --fw-bold: 700;
+  --fw-medium: 500;
+  --fw-regular: 400;
+
+  // spacing
+  --space-xs: 0.8rem;
+  --space-sm: 1.6rem;
+  --space-md: 2.4rem;
+  --space-lg: 3.2rem;
+  --space-xl: 4rem;
+}
+@mixin breakpoint($size) {
+  @if $size == "mobile" {
+    @media (min-width: 40rem) {
+      @content;
+    }
+  } @else if $size == "tablet" {
+    @media (min-width: 68.75rem) {
+      @content;
+    }
+  }
+}
+
+// @mixin text-preset-1 {
+//   font-size: var(--fs-1);
+//   line-height: var(--lh-1);
+//   letter-spacing: var(--ls);
+// }
+// @mixin text-preset-2 {
+//   font-size: var(--fs-2);
+//   line-height: var(--lh-2);
+//   letter-spacing: var(--ls);
+// }
+// @mixin text-preset-3 {
+//   font-size: var(--fs-3);
+//   line-height: var(--lh-3);
+//   letter-spacing: var(--ls);
+// }
+@mixin text-preset($level) {
+  font-size: var(--fs-#{$level});
+  line-height: var(--lh-#{$level});
+  letter-spacing: var(--ls);
+}
+// @mixin flex-col {
+//   display: flex;
+//   flex-direction: column;
+// }
+// @mixin flex-row {
+//   display: flex;
+//   flex-direction: row;
+// }
+@mixin flex($direction: column) {
+  display: flex;
+  flex-direction: $direction;
+}
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+img {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+}
+a {
+  text-decoration: none;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: var(--ff);
+  font-size: var(--fs-3);
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(to bottom, $dark-purple 40%, $light-purple 40%);
+  background-image: url(./../images/background-pattern-mobile.svg);
+  @include breakpoint(mobile) {
+    background-image: url(./../images/background-pattern-desktop.svg);
+  }
+  background-repeat: no-repeat;
+}
+.container {
+  background-color: var(--color-bg-card);
+  max-width: 35rem;
+  padding: var(--space-md);
+  border-radius: var(--space-xs);
+  box-shadow: var(--shadow);
+  @include flex;
+  gap: var(--space-md);
+
+  @include breakpoint(mobile) {
+    max-width: 60rem;
+    padding: var(--space-xl);
+    border-radius: var(--space-sm);
+    gap: var(--space-lg);
+  }
+
+  &-header {
+    @include flex(row);
+    gap: var(--space-xs);
+    align-items: center;
+
+    h1 {
+      @include text-preset(1);
+    }
+  }
+
+  &-body {
+    @include flex;
+    gap: var(--space-md);
+
+    .card {
+      @include flex;
+      gap: var(--space-md);
+
+      &.active {
+        h2 {
+          color: var(--color-accent);
+        }
+
+        & .card-body {
+          display: block;
+        }
+      }
+
+      &-head {
+        @include flex(row);
+        justify-content: space-between;
+        cursor: pointer;
+        h2 {
+          @include text-preset(2);
+          color: var(--color-heading);
+        }
+
+        button {
+          cursor: pointer;
+          border: none;
+          background-color: transparent;
+        }
+      }
+      &-body {
+        display: none;
+        p {
+          @include text-preset(3);
+        }
+      }
+    }
+  }
+}
+.hidden {
+  display: none;
+}
+.show {
+  display: block;
+}
