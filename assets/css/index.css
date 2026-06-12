@@ -8,7 +8,7 @@
   --color-accent: hsl(281, 83%, 54%);
   --color-line: hsl(275, 100%, 97%);
   --color-bg-card: hsl(0, 0%, 100%);
-  --shadow: 0 0.3rem 0.6rem hsl(0, 0%, 0%);
+  --shadow: 0 0.6rem 1.5rem rgba(139.6108, 104.958, 144.942, 0.15);
   --ff: "WorkSans", sans-serif;
   --fs-1: 5.6rem;
   --fs-2: 1.8rem;
@@ -55,13 +55,12 @@ body {
   min-height: 100vh;
   display: grid;
   place-items: center;
-  background: linear-gradient(to bottom, hsl(292, 42%, 14%) 40%, hsl(275, 100%, 97%) 40%);
-  background-image: url(./../images/background-pattern-mobile.svg);
+  background-image: url(./../images/background-pattern-mobile.svg), linear-gradient(to bottom, hsl(292, 42%, 14%) 40%, hsl(275, 100%, 97%) 40%);
   background-repeat: no-repeat;
 }
 @media (min-width: 40rem) {
   body {
-    background-image: url(./../images/background-pattern-desktop.svg);
+    background-image: url(./../images/background-pattern-desktop.svg), linear-gradient(to bottom, hsl(292, 42%, 14%) 40%, hsl(275, 100%, 97%) 40%);
   }
 }
 

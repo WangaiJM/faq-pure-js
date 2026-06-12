@@ -18,7 +18,7 @@ $violet: hsl(281, 83%, 54%);
   --color-line: #{$light-purple};
   --color-bg-card: #{$white};
 
-  --shadow: 0 0.3rem 0.6rem #{$black};
+  --shadow: 0 0.6rem 1.5rem #{rgba($medium-purple, 0.15)};
 
   // typography
   --ff: "WorkSans", sans-serif;
@@ -112,10 +112,13 @@ body {
   min-height: 100vh;
   display: grid;
   place-items: center;
-  background: linear-gradient(to bottom, $dark-purple 40%, $light-purple 40%);
-  background-image: url(./../images/background-pattern-mobile.svg);
+  background-image:
+    url(./../images/background-pattern-mobile.svg),
+    linear-gradient(to bottom, $dark-purple 40%, $light-purple 40%);
   @include breakpoint(mobile) {
-    background-image: url(./../images/background-pattern-desktop.svg);
+    background-image:
+      url(./../images/background-pattern-desktop.svg),
+      linear-gradient(to bottom, $dark-purple 40%, $light-purple 40%);
   }
   background-repeat: no-repeat;
 }
